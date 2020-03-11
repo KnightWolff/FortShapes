@@ -48,6 +48,21 @@ public abstract class Sprite {
 
     }
 
+    public void bounce(){
+        double nextLeft = x + dx;
+        double nextRight = (x+width) + dx;
+        double nextTop = y+dy;
+        double nextBottom = (y + height) + dy;
+
+        if(nextTop < 0 || nextBottom > (double) height){
+            dy*=-1;
+        }
+
+        if(nextLeft < 0 || nextRight > (double)width){
+            dx*=-1;
+        }
+    }
+
     public boolean collidesWith(Sprite other){
         return getBounds().intersects(other.getBounds());
     }
@@ -97,6 +112,7 @@ public abstract class Sprite {
     public void setHeight(int height) {
         this.height = height;
     }
+
 
     public boolean isRemove(){
         return remove;

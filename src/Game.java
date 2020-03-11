@@ -1,28 +1,25 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
-public class Game extends JFrame{
+public class Game extends JFrame implements KeyListener {
 
     Board board;
 
-    ImageIcon img = new ImageIcon("download.png");
     int positionX, positionY;
     long moment;
-    boolean mouseClick = false;
+    boolean enterPress, mouseClick = false;
 
     public Game(){
         setTitle("FortShape");
         setVisible(true);
         setResizable(false);
-        setIconImage(img.getImage());
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         board = new Board(this);
         add(board);
+        addKeyListener(this);
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -77,6 +74,33 @@ public class Game extends JFrame{
 
     public static void main(String[] args){
         new Game();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            setEnterPress(true);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            setEnterPress(false);
+        }
+    }
+
+    public boolean isEnterPressed() {
+        return enterPress;
+    }
+
+    public void setEnterPress(boolean enterPress) {
+        this.enterPress = enterPress;
     }
 
 }

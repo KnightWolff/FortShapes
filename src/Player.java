@@ -5,7 +5,7 @@ public class Player extends Sprite{
     Game game;
 
     public Player(Color color, int x, int y, int width, int height, Board board, Game game) {
-        super(color, x, y, width, height, board);
+        super(color,  x,  y,  width,  height,  board);
         this.game = game;
 
     }

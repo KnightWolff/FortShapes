@@ -4,7 +4,7 @@ public class Enemy extends Sprite {
 
 
    public Enemy(Color color, int x, int y, int width, int height, Board board){
-       super(color, x, y, width, height, board);
+       super(color,  x,  y,  width,  height,  board);
    }
 
     @Override
